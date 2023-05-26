@@ -9,3 +9,7 @@ edition = "2021"
 
 [[bin]]
 name = "task1"
+
+[[bin]]
+name = "task2"
+
