@@ -14,3 +14,5 @@ name = "task1"
 [[bin]]
 name = "task2"
 
+[[bin]]
+name = "task3"
