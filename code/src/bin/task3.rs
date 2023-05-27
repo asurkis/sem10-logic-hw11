@@ -43,15 +43,15 @@ fn main() {
             }
 
             println!("fill_rest_b_2_{ns}_{x},_");
-            println!("seek_answer_start,{x},<");
+            println!("seek_answer_start_left,{x},<");
         }
     }
 
     for x in 0..2 {
-        println!("seek_answer_start,{x}");
-        println!("seek_answer_start,{x},<");
+        println!("seek_answer_start_left,{x}");
+        println!("seek_answer_start_left,{x},<");
     }
-    println!("seek_answer_start,_");
+    println!("seek_answer_start_left,_");
     println!("final,_,>");
 
     for ns in 0..16 {
@@ -72,10 +72,26 @@ fn main() {
 
             // B == {}
             println!("seek_end_b_1_{ns}_{x},_");
-            println!("write_and_back_0_{ns}_{},_,>", answer_bit(ns, x, 0));
+            println!("fill_rest_a_0_{ns},{},<", answer_bit(ns, x, 0));
+        }
 
-            println!("write_and_back_0_{ns}_{x},_");
-            println!("write_and_back_1_{ns}_{x},_,>");
+        println!("fill_rest_a_0_{ns},_");
+        println!("fill_rest_a_1_{ns},_,<");
+
+        // A == {}
+        println!("fill_rest_a_1_{ns},_");
+        println!("step_right_1,_,>");
+
+        for x in 0..2 {
+            // A != {}
+            println!("fill_rest_a_1_{ns},{x}");
+            println!("fill_rest_a_2_{ns}_{x},_,>");
+
+            println!("fill_rest_a_2_{ns}_{x},_");
+            println!("fill_rest_a_0_{ns},{},<", answer_bit(ns, x, 0));
         }
     }
+
+    println!("step_right_1,_");
+    println!("final,_,>");
 }
