@@ -55,8 +55,8 @@ fn main() {
     println!("final,_,>");
 
     for ns in 0..16 {
-        // A != {}
         for x in 0..2 {
+            // A != {}
             // Сдвинем A вправо и запомним младший бит
             println!("seek_end_a_1_{ns},{x}");
             println!("seek_end_a_2_{ns}_{x},_,>");
@@ -89,6 +89,48 @@ fn main() {
 
             println!("fill_rest_a_2_{ns}_{x},_");
             println!("fill_rest_a_0_{ns},{},<", answer_bit(ns, x, 0));
+        }
+
+        for x in 0..2 {
+            for y in 0..2 {
+                // B != {}
+                println!("seek_end_b_1_{ns}_{x},{y}");
+                println!("seek_end_b_2_{ns}_{x},{y},>");
+
+                println!("seek_end_b_2_{ns}_{x},{y}");
+                println!("seek_end_b_2_{ns}_{x},{y},>");
+            }
+
+            println!("seek_end_b_2_{ns}_{x},_");
+            println!("seek_end_b_3_{ns}_{x},_,<");
+
+            for y in 0..2 {
+                println!("seek_end_b_3_{ns}_{x},{y}");
+                println!("return_0_{ns}_{},_,>", answer_bit(ns, x, y));
+            }
+
+            // Запишем ответ
+            println!("return_0_{ns}_{x},_");
+            println!("return_1_{ns},{x},<");
+        }
+
+        // Пустая клетка
+        println!("return_1_{ns},_");
+        println!("return_2_{ns},_,<");
+
+        // Найдём начало B
+        println!("return_2_{ns},_");
+        println!("return_3_{ns},_,<");
+        for x in 0..2 {
+            println!("return_2_{ns},{x}");
+            println!("return_2_{ns},{x},<");
+        }
+        // Найдём начало A
+        println!("return_3_{ns},_");
+        println!("seek_end_a_1_{ns},_,>");
+        for x in 0..2 {
+            println!("return_3_{ns},{x}");
+            println!("return_3_{ns},{x},<");
         }
     }
 
